@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <title>Recipe Finder</title>
+</head>
+
+<body>
+    <!--The header or top of the page-->
+    <header class="row">
+        <div class="s12 m12 l8" id="header-bar">
+            <div id="header-text">
+                <h1>
+
+                    <a href="/">Recipe Finder</a>
+                </h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar information-->
+    <section>
+        <div id="form-div" clsss="container">
+            <h2 id="quick-recipes-header"> Quick recipes </h2>
+            <form>
+                <label for="search"></label>
+                <input type="text" placeholder="Enter an ingredient or meal" href="">
+                <button class="button is-outlined" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </section>
+   
+
+    <!--Adding Top 4 recpies of the group-->
+    <section class="featured is-flex-direction-row">
+        <div id="featured-title">
+            <h3 id=featured-h3>
+                Featured Recipes
+            </h3>
+        </div>
+        <div class="row featured-list container">
+            <article class="col s12 m12 l2 image-article">
+                <a href="/"><img src="./img/burger.jpg" class="featured-image" alt="Cheese Burger"> Cheese Burger</a>
+
+            </article>
+            <article class="col s12 m12 l2 image-article">
+                <a href="/"><img src="./img/empanadas.jpg" class="featured-image" alt="Empanada">Empanadas</a>
+
+            </article>
+            <article class="col s12 m12 l2 image-article">
+                <a href="/"><img src="./img/chicken.jpg" class="featured-image" alt="Jerk Chicken">Jerk Chicken</a>
+
+            </article>
+            <article class="col s12 m12 l2 image-article">
+                <a href="/"><img src="./img/pie.jpg" class="featured-image" alt="Ke Lime Pie">Key Lime Pie</a>
+            </article>
+        </div>
+    </section>
+
+    <!--modals-->
+    <div id="no-recipes" class="modal">
+        <div class="modal-background"></div>
+      
+        <div class="modal-content">
+          <div class="box">
+            <p>Uh oh! No recipes found. Try again.</p>
+          </div>
+        </div>
+      
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+
+      <div id="no-recipes" class="modal">
+        <div class="modal-background"></div>
+      
+
+        <div class="modal-content">
+          <div class="box">
+            <p>Uh oh! No recipes found. Try again.</p>
+          </div>
+        </div>
+      
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+
+    <footer>
+        <h3>2022 TEAM 3 PRODUCTIONS</h3>
+    </footer>
+
+    <!--Adding the JavaScript page link to the bottom of the page-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+
+</html>

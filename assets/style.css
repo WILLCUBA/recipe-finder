@@ -1,0 +1,123 @@
+
+
+#header-bar {
+    background-color:black;
+    justify-content: center;
+    display: flex;
+    height: 50px;
+    position:sticky;
+    position:-webkit-sticky;
+    top:0;
+   
+
+
+}
+
+#header-text{
+    background-image: linear-gradient(60deg,red,gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-size: 40px;
+    font-family: 'Dosis', sans-serif;
+   
+
+}
+
+
+
+
+
+#form-div {
+    display:flex;
+    background-image: url(../img/book.jpg);
+    background-size:cover;
+    background-position: center;
+    justify-content: center;
+    margin: 0px 200px 50px 200px;
+
+   
+}
+
+form {
+    width: 200px;
+    text-align:center;
+    display:inline;
+    
+}
+
+
+input{
+    border-color: khaki;
+    border: 5px;
+    color:black;
+}
+
+::placeholder {
+    color: orangered;
+    opacity: 0.6;
+}
+
+::-ms-input-placeholder {
+    color: orangered;
+  }
+
+
+html{
+    background-image: url(../img/food-pic.jpg);
+    background-size:cover;
+    background-position: center;
+
+     
+    
+}
+
+
+#featured-title{ 
+text-align: center;
+color:black;
+margin-bottom: 20px;
+font-size: 40px;
+font-family: 'Dosis', sans-serif;
+
+}
+
+
+.featured {
+        margin: 0px 200px 50px 200px;
+
+}
+
+
+
+
+.featured-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    }
+
+.featured-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 25px;
+    margin-bottom: 15px;
+}
+
+.image-article a {
+    font-family: 'Dosis', sans-serif;
+    color: black;
+    font-size: 20px;
+}
+.featured-image:hover {
+    transform: scale(1.5);
+    
+}
+
+footer{
+    background-color: black;
+    position:absolute;
+    bottom: 0;
+    width:100%;
+}

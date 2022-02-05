@@ -1,4 +1,13 @@
+body, html{
+    background-image: url(../img/food-pic.jpg);
+    background-size:cover;
+    background-position: center;
+    height: 100%;
+    width:100%;
 
+     
+    
+}
 
 #header-bar {
     background-color:black;
@@ -63,14 +72,7 @@ input{
   }
 
 
-html{
-    background-image: url(../img/food-pic.jpg);
-    background-size:cover;
-    background-position: center;
 
-     
-    
-}
 
 
 #featured-title{ 
@@ -120,4 +122,5 @@ footer{
     position:absolute;
     bottom: 0;
     width:100%;
+    color:orangered;
 }

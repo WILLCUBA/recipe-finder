@@ -17,9 +17,6 @@ body, html{
     position:sticky;
     position:-webkit-sticky;
     top:0;
-   
-
-
 }
 
 #header-text{
@@ -32,10 +29,6 @@ body, html{
    
 
 }
-
-
-
-
 
 #form-div {
     display:flex;

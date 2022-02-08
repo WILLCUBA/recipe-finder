@@ -4,6 +4,7 @@ var searchRecBtnEl = $("#search-recipes")
 var recipesIngredient1 = $("#recipes-ingredient-1")
 var recipesIngredient2 = $("#recipes-ingredient-2")
 var sectionRecipesRendered = $("#recipes-container")
+
 //get rec function
 var getRecipes = function(ingredient1,ingredient2) {
     var apiUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+ingredient1+",+"+ingredient2+"&apiKey="+apiKey+"&number=4"
@@ -13,9 +14,11 @@ var getRecipes = function(ingredient1,ingredient2) {
                 console.log(data);
                 for (let index = 0; index < data.length; index++) {
                     renderRecipes(data[index])
+                    console.log("hello");
                 }
             })
         } else {
+            console.log("asd");
             alert("Modal!!!")
             return false
         }
@@ -32,7 +35,7 @@ var renderRecipes = function(recipe) {
     var cardImg = $("<div>").addClass("card-image")
     cardDiv.append(cardImg)
     //->figure
-    var figureImg = $("<figure>").addClass("image").addClass("is-128x128")
+    var figureImg = $("<figure>").addClass("image")
     cardImg.append(figureImg)
     var imgTag = $("<img>").attr("src",recipe.image)
     figureImg.append(imgTag)
@@ -64,6 +67,9 @@ var renderIngredients = function(usedIngredientArr,ol) {
 
 
 
-searchRecBtnEl.on("click",function(){
+searchRecBtnEl.on("click",function(event){
+    event.preventDefault()
     getRecipes(recipesIngredient1.val(),recipesIngredient2.val())
 })
+
+console.log("hello");

@@ -1,5 +1,5 @@
 body, html{
-    background-image: url(../img/food-pic.jpg);
+    background-image: url(../imgs/food-pic.jpg);
     background-size:cover;
     background-position: center;
     height: 100%;
@@ -112,8 +112,26 @@ font-family: 'Dosis', sans-serif;
 
 footer{
     background-color: black;
-    position:absolute;
     bottom: 0;
     width:100%;
     color:orangered;
+    position: relative;
+    bottom: 100;
+}
+
+/*Cards*/
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card ul {
+    color: aqua;
 }

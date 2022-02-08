@@ -72,4 +72,73 @@ searchRecBtnEl.on("click",function(event){
     getRecipes(recipesIngredient1.val(),recipesIngredient2.val())
 })
 
-console.log("hello");
+//-----------------------------------DRINKS-----------------------------------------//
+
+var searchDrinksBtnEl = $("#search-drinks-btn")
+var drinkIngredient1 = $("#drinks-ingredient")
+var sectionDrinkRendered = $("#drinks-container")
+
+var getDrinks = function(ingredient) {
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+ingredient).then(function(response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+                for (let index = 0; index < 4; index++) {
+                    renderDrinks(data.drinks[index])
+                }
+            })
+        } else {
+            console.log("asd");
+            alert("Modal!!!")
+            return false
+        }
+    })
+}
+
+var renderDrinks = function(drink) {
+    //div c-card
+    var cardDivDrink = $("<div>").addClass("card").addClass("m-3")
+    sectionDrinkRendered.append(cardDivDrink)
+    //img section
+    //div c-card-image
+    var cardImgDrink = $("<div>").addClass("card-image")
+    cardDivDrink.append(cardImgDrink)
+    //->figure
+    var figureImg = $("<figure>").addClass("image")
+    cardImgDrink.append(figureImg)
+    var imgTag = $("<img>").attr("src",drink.strDrinkThumb)
+    figureImg.append(imgTag)
+    //content section
+    //div card-content
+    var contentDiv = $("<div>").addClass("content").addClass("has-text-centered").addClass("mt-3")
+    cardDivDrink.append(contentDiv)
+    //p title
+    var pRecipeName = $("<p>").addClass("title").addClass("is-5").text(drink.strDrink)
+    contentDiv.append(pRecipeName)
+    //p menu-labe
+    var pIngredients = $("<p>").addClass("menu-label").addClass("title").addClass("is-6").text("Ingredients")
+    contentDiv.append(pIngredients)
+    //ol of ingredients
+    var olOfIng = $("<ul>").addClass("menu-list")
+    contentDiv.append(olOfIng)
+    renderIngredientsDrink(drink,olOfIng)
+}
+
+var renderIngredientsDrink = function(drink,ol) {
+    var ingredients = [drink.strIngredient1,drink.strIngredient2,drink.strIngredient3,drink.strIngredient4]
+    console.log(ingredients);
+    for (let index = 0; index < ingredients.length; index++) {
+       var ingredientLi = $("<li>")
+       var ingredientA = $("<a>")
+       ingredientA.text(ingredients[index])
+       ingredientLi.append(ingredientA)
+       ol.append(ingredientLi)
+    }
+}
+
+
+
+searchDrinksBtnEl.on("click",function(event){
+    event.preventDefault()
+    getDrinks(drinkIngredient1.val())
+})

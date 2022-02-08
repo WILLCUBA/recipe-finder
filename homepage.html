@@ -23,7 +23,7 @@
         <div class="s12 m12 l8" id="header-bar">
             <div id="header-text">
                 <h1>
-                    <a href="">Recipe Finder</a>/<a href="">Drinks Finder</a>
+                    <a href="#recFinder">Recipe Finder</a>/<a href="#drFinder">Drinks Finder</a>
                 </h1>
             </div>
         </div>
@@ -34,7 +34,7 @@
 
 
     
-    <section class="container" >
+    <section class="container" id="recFinder" >
         <div class="columns is-multiline">
           <div class="column is-8 is-offset-2 register">
             <div class="columns">
@@ -62,7 +62,7 @@
     <section class="section is-flex is-justify-content-center is-flex-wrap-wrap" id="recipes-container">
     </section>
     <!--Drinks-->
-    <section class="container">
+    <section class="container" id="drFinder">
         <div class="columns is-multiline">
             <div class="column is-8 is-offset-2 register">
                 <div class="columns">
@@ -97,7 +97,7 @@
 <style>
     :root {
       --brandColor: hsl(0, 0%, 0%);
-      --background: rgb(247, 247, 247);
+      --background: rgba(245, 238, 238, 0.8);
       --textDark: hsla(0, 0%, 0%, 0.66);
       --textLight: hsla(0, 0%, 0%, 0.33);
     }
@@ -107,7 +107,7 @@
 
   .register {
     margin-top: 10rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
   }
 

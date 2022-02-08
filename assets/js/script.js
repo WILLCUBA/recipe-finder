@@ -68,6 +68,7 @@ var renderIngredients = function(usedIngredientArr,ol) {
 
 
 searchRecBtnEl.on("click",function(event){
+    sectionRecipesRendered.html("")
     event.preventDefault()
     getRecipes(recipesIngredient1.val(),recipesIngredient2.val())
 })
@@ -140,5 +141,6 @@ var renderIngredientsDrink = function(drink,ol) {
 
 searchDrinksBtnEl.on("click",function(event){
     event.preventDefault()
+    sectionDrinkRendered.html("")
     getDrinks(drinkIngredient1.val())
 })

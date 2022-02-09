@@ -4,12 +4,18 @@ var searchRecBtnEl = $("#search-recipes")
 var recipesIngredient1 = $("#recipes-ingredient-1")
 var recipesIngredient2 = $("#recipes-ingredient-2")
 var sectionRecipesRendered = $("#recipes-container")
-
+var modalRecipe = $("#food-modal").hide()
+var modalDrink = $("#drink-modal").hide()
+console.log(modalDrink,modalRecipe);
 //get rec function
 var getRecipes = function(ingredient1,ingredient2) {
     var apiUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+ingredient1+",+"+ingredient2+"&apiKey="+apiKey+"&number=4"
     fetch(apiUrl).then(function(response) {
-        if (response.ok) {
+        if (recipesIngredient1.val() === "" && recipesIngredient2.val() === "") {
+            modalDrink.show("slow")
+            return
+        }
+        else if (response.ok) {
             response.json().then(function (data) {
                 console.log(data);
                 for (let index = 0; index < data.length; index++) {
@@ -19,7 +25,7 @@ var getRecipes = function(ingredient1,ingredient2) {
             })
         } else {
             console.log("asd");
-            alert("Modal!!!")
+            modalRecipe.show("slow")
             return false
         }
     })
@@ -53,6 +59,7 @@ var renderRecipes = function(recipe) {
     var olOfIng = $("<ul>").addClass("menu-list")
     contentDiv.append(olOfIng)
     renderIngredients(recipe.usedIngredients,olOfIng)
+    getInfoLink(recipe.id,cardDiv)
 }
 
 var renderIngredients = function(usedIngredientArr,ol) {
@@ -63,6 +70,21 @@ var renderIngredients = function(usedIngredientArr,ol) {
        ingredientLi.append(ingredientA)
        ol.append(ingredientLi)
     }
+}
+
+var getInfoLink = function(id,card) {
+    var apiUrl = "https://api.spoonacular.com/recipes/"+id+"/information?apiKey="+apiKey
+    fetch(apiUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+                var aLink = $("<a>").attr("href",data.sourceUrl).text("Link Recipe Details")
+                card.append(aLink)
+            })
+        } else {
+            console.log("asd");
+        }
+    })
 }
 
 
@@ -81,7 +103,11 @@ var sectionDrinkRendered = $("#drinks-container")
 
 var getDrinks = function(ingredient) {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+ingredient).then(function(response) {
-        if (response.ok) {
+        if (drinkIngredient1.val() === "") {
+            modalDrink.show("slow")
+            return
+        }
+        else if (response.ok) {
             response.json().then(function (data) {
                 console.log(data);
                 for (let index = 0; index < 4; index++) {
@@ -89,8 +115,7 @@ var getDrinks = function(ingredient) {
                 }
             })
         } else {
-            console.log("asd");
-            alert("Modal!!!")
+            modalDrink.show("slow")
             return false
         }
     })
@@ -123,6 +148,8 @@ var renderDrinks = function(drink) {
     var olOfIng = $("<ul>").addClass("menu-list")
     contentDiv.append(olOfIng)
     renderIngredientsDrink(drink,olOfIng)
+    var pInstructions= $("<p>").addClass("menu-label").addClass("title").addClass("is-6").text(drink.strInstructions)
+    cardDivDrink.append(pInstructions)
 }
 
 var renderIngredientsDrink = function(drink,ol) {
@@ -144,3 +171,8 @@ searchDrinksBtnEl.on("click",function(event){
     sectionDrinkRendered.html("")
     getDrinks(drinkIngredient1.val())
 })
+
+
+//links to the recipes
+// drink descriprtion
+// edit modal

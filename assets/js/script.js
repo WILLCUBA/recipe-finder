@@ -1,5 +1,5 @@
 //vars
-var apiKey = "9813f9d740654d9982b7fb5d60693466"
+var apiKey = "ae90cf44008c440b8bcb2e18a7c40578"
 var searchRecBtnEl = $("#search-recipes")
 var recipesIngredient1 = $("#recipes-ingredient-1")
 var recipesIngredient2 = $("#recipes-ingredient-2")

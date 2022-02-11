@@ -95,23 +95,35 @@
         <h3>2022 TEAM 3 PRODUCTIONS</h3>
     </footer>
     <!-- F Modal -->
-    <div class="modal" id="food-modal">
+    <div class="modal" id="drink-modal">
         <div class="modal-background"></div>
-        <div class="modal-content">
-            <!-- Any other Bulma elements you want -->
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Upps!!</p>
+          </header>
+          <section class="modal-card-body">
+            <p>No recipe were found for those ingredients</p>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button" id="close-modal-btn">Close</button>
+          </footer>
         </div>
-        <button class="modal-close is-large" aria-label="close"></button>
     </div>
     <!-- Drink -->
     <div class="modal" id="drink-modal">
         <div class="modal-background"></div>
-        <div class="modal-content">
-            <!-- Any other Bulma elements you want -->
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Upps!!</p>
+          </header>
+          <section class="modal-card-body">
+            <p>No drink were found for that ingredient</p>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button" id="close-modal-btn">Close</button>
+          </footer>
         </div>
-        <button class="modal-close is-large" aria-label="close"><i class="fa-solid fa-square-xmark"
-                aria-label="close"></i></button>
     </div>
-    <!--Adding the JavaScript page link to the bottom of the page-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>

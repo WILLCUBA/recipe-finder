@@ -133,3 +133,7 @@ footer{
 .card ul {
     color: aqua;
 }
+
+.modal {
+    background-color: rgba(red,green, blue,0);
+}

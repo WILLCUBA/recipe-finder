@@ -172,7 +172,9 @@ searchDrinksBtnEl.on("click",function(event){
     getDrinks(drinkIngredient1.val())
 })
 
-
+$("#close-modal-btn").on("click",function () {
+    $(".modal").hide()
+})
 //links to the recipes
 // drink descriprtion
 // edit modal

@@ -48,7 +48,7 @@ second section focus on the drinks on one page.
 • Time Management
 
 ## Screenshot
-![image](https://user-images.githubusercontent.com/51419545/153534667-a7de90eb-6249-43c5-8c3f-e7ff381177ff.png)
+![image](https://user-images.githubusercontent.com/51419545/153534809-b8c60fec-8a83-4762-bd68-36a44af09cc3.png)
 
 ## Directions for future Development
 

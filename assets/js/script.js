@@ -6,7 +6,16 @@ var recipesIngredient2 = $("#recipes-ingredient-2")
 var sectionRecipesRendered = $("#recipes-container")
 var modalRecipe = $("#food-modal").hide()
 var modalDrink = $("#drink-modal").hide()
-console.log(modalDrink,modalRecipe);
+
+
+if (!localStorage.getItem("searchHistoryFood")) {
+    var searchHistoryFood = []    
+} else var searchHistoryFood = JSON.parse(localStorage.getItem("searchHistoryFood"))
+
+if (!localStorage.getItem("searchHistoryDrink")) {
+    var searchHistoryDrink = []    
+} else var searchHistoryDrink = JSON.parse(localStorage.getItem("searchHistoryDrink"))
+
 //get rec function
 var getRecipes = function(ingredient1,ingredient2) {
     var apiUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+ingredient1+",+"+ingredient2+"&apiKey="+apiKey+"&number=4"
@@ -88,11 +97,11 @@ var getInfoLink = function(id,card) {
 }
 
 
-
 searchRecBtnEl.on("click",function(event){
     sectionRecipesRendered.html("")
     event.preventDefault()
     getRecipes(recipesIngredient1.val(),recipesIngredient2.val())
+    searchHistory.push(recipesIngredient1+"/"+recipesIngredient2)
 })
 
 //-----------------------------------DRINKS-----------------------------------------//
@@ -100,18 +109,22 @@ searchRecBtnEl.on("click",function(event){
 var searchDrinksBtnEl = $("#search-drinks-btn")
 var drinkIngredient1 = $("#drinks-ingredient")
 var sectionDrinkRendered = $("#drinks-container")
+var searchHistoryDrinksUL = $("#search-history-drinks")
 
 var getDrinks = function(ingredient) {
     fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+ingredient).then(function(response) {
-        if (drinkIngredient1.val() === "") {
+        if (!ingredient) {
             modalDrink.show("slow")
             return
         }
         else if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 for (let index = 0; index < 4; index++) {
                     renderDrinks(data.drinks[index])
+                    if(!searchHistoryDrink.includes(drinkIngredient1.val())) {
+                        searchHistoryDrink.push(ingredient)
+                    }
+                    localStorage.setItem('searchHistoryDrink',JSON.stringify(searchHistoryDrink))
                 }
             })
         } else {
@@ -154,7 +167,6 @@ var renderDrinks = function(drink) {
 
 var renderIngredientsDrink = function(drink,ol) {
     var ingredients = [drink.strIngredient1,drink.strIngredient2,drink.strIngredient3,drink.strIngredient4]
-    console.log(ingredients);
     for (let index = 0; index < ingredients.length; index++) {
        var ingredientLi = $("<li>")
        var ingredientA = $("<a>")
@@ -172,9 +184,22 @@ searchDrinksBtnEl.on("click",function(event){
     getDrinks(drinkIngredient1.val())
 })
 
+var renderHistoryDrink = function() {
+    JSON.parse(localStorage.getItem("searchHistoryDrink")).forEach(element => {
+        console.log(element);
+        var pIngredient = $("<li>").addClass("title").addClass("is-5")
+        pIngredient.text(element)
+        $("#search-history-drinks").append(pIngredient)
+    });
+}
+
+searchHistoryDrinksUL.on("click","li",function(){
+    getDrinks($(this).text())  
+})
+
 $("#close-modal-btn").on("click",function () {
     $(".modal").hide()
 })
-//links to the recipes
-// drink descriprtion
-// edit modal
+
+renderHistoryDrink()
+
